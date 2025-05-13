@@ -99,7 +99,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes scroll {
           0%, 100% {
             top: 0;

@@ -70,7 +70,7 @@ const CustomCursor = () => {
         }}
       ></div>
       
-      <style jsx>{`
+      <style>{`
         .custom-cursor {
           transition: width 0.2s, height 0.2s, background-color 0.2s;
         }
