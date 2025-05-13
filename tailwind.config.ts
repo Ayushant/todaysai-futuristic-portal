@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,34 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for TodaysAi
+				navy: {
+					DEFAULT: '#0A1128',
+					100: '#1A223F',
+					200: '#2A3356',
+				},
+				techpurple: {
+					DEFAULT: '#6E44FF',
+					light: '#8F6AFF',
+					dark: '#4D2ED9',
+				},
+				elecblue: {
+					DEFAULT: '#0AAFE6',
+					light: '#42C3F0',
+					dark: '#0889B3',
+				},
+				neon: {
+					purple: '#B14EFF',
+					blue: '#0DCCFF',
+					green: '#00FFA3',
+					pink: '#FF5EDF',
+				},
+			},
+			fontFamily: {
+				sans: ['Inter var', 'sans-serif'],
+				sora: ['Sora', 'sans-serif'],
+				ibm: ['IBM Plex Sans', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -70,26 +98,42 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' },
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
-				}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' },
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+				},
+				'pulse-glow': {
+					'0%, 100%': { opacity: '1', filter: 'brightness(1)' },
+					'50%': { opacity: '0.8', filter: 'brightness(1.2)' },
+				},
+				'gradient-flow': {
+					'0%': { backgroundPosition: '0% 50%' },
+					'100%': { backgroundPosition: '100% 50%' },
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-500px 0' },
+					'100%': { backgroundPosition: '500px 0' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 5s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+				'gradient-flow': 'gradient-flow 8s linear infinite alternate',
+				'shimmer': 'shimmer 2s linear infinite',
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'grid-pattern': 'linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
