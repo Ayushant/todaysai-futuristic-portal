@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Code, Smartphone } from 'lucide-react';
 
 // Define product and service types
 type Product = {
@@ -54,6 +54,20 @@ const products: Product[] = [
 
 const services: Service[] = [
   {
+    id: 'webdev',
+    name: 'Web Development',
+    description: 'Full-stack web solutions with modern frameworks, responsive designs, and cloud integration for businesses of all sizes.',
+    icon: '💻',
+    industries: ['E-commerce', 'FinTech', 'Healthcare', 'Education'],
+  },
+  {
+    id: 'appdev',
+    name: 'App Development',
+    description: 'Native and cross-platform mobile applications with seamless UX/UI, backend integration, and advanced features.',
+    icon: '📱',
+    industries: ['Retail', 'Logistics', 'Social Media', 'Fitness'],
+  },
+  {
     id: 'aidev',
     name: 'AI Development',
     description: 'Full-cycle AI solution development from concept to deployment, including model training and integration.',
@@ -85,7 +99,7 @@ const services: Service[] = [
 
 const WhatWeDo = () => {
   const [activeProduct, setActiveProduct] = useState<string | null>(null);
-  const [activeService, setActiveService] = useState('aidev');
+  const [activeService, setActiveService] = useState('webdev');
   
   return (
     <section className="py-20 relative overflow-hidden" id="products">
@@ -220,6 +234,17 @@ const WhatWeDo = () => {
                       ))}
                     </div>
                   </div>
+                  
+                  {service.id === 'webdev' || service.id === 'appdev' ? (
+                    <div className="mb-6 bg-white/5 p-4 rounded-lg border border-elecblue/20">
+                      <h5 className="text-sm uppercase text-elecblue mb-3">Expert Team</h5>
+                      <p className="text-white/80 text-sm">
+                        Our dedicated team of {service.id === 'webdev' ? 'web' : 'app'} development experts brings years of 
+                        industry experience with cutting-edge technologies and frameworks to deliver robust, 
+                        scalable, and user-friendly solutions tailored to your business needs.
+                      </p>
+                    </div>
+                  ) : null}
                   
                   <a href="#contact" className="btn-secondary inline-flex items-center text-sm">
                     Request Consultation <ArrowRight size={16} className="ml-2" />
