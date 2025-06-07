@@ -34,23 +34,31 @@ const ProjectGrid = ({ projects, onProjectClick, onResetFilters }: ProjectGridPr
   }
 
   return (
-    <AnimatePresence mode="wait">
-      {projects.map((project, index) => (
-        <m.div
-          key={project.id}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          layout
-        >
-          <ProjectCard
-            project={project}
-            onClick={onProjectClick}
-          />
-        </m.div>
-      ))}
-    </AnimatePresence>
+    <m.div 
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+      viewport={{ once: true }}
+    >
+      <AnimatePresence mode="wait">
+        {projects.map((project, index) => (
+          <m.div
+            key={project.id}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            layout
+          >
+            <ProjectCard
+              project={project}
+              onClick={onProjectClick}
+            />
+          </m.div>
+        ))}
+      </AnimatePresence>
+    </m.div>
   );
 };
 

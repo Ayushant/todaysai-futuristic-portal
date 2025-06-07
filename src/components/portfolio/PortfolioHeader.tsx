@@ -4,18 +4,19 @@ import { motion as m } from 'framer-motion';
 
 const PortfolioHeader = () => {
   return (
-    <m.div
-      initial={{ opacity: 0, y: 30 }}
+    <m.div 
+      className="text-center mb-12"
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="text-center mb-16"
     >
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-        Our <span className="text-techpurple">Portfolio</span>
+      <h2 className="text-3xl md:text-5xl font-bold heading-gradient mb-5">
+        Our Portfolio
       </h2>
-      <p className="text-xl text-white/70 max-w-3xl mx-auto">
-        Discover our innovative solutions that drive business growth and user engagement
+      <p className="text-white/70 max-w-2xl mx-auto">
+        Explore our diverse range of projects showcasing how we've helped businesses 
+        across industries leverage cutting-edge technology to achieve their goals.
       </p>
     </m.div>
   );
