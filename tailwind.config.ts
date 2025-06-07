@@ -62,8 +62,7 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
-				// Custom colors for TodaysAi
+				},				// Custom colors for atkind
 				navy: {
 					DEFAULT: '#0A1128',
 					100: '#1A223F',

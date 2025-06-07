@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <!-- Main outer shape -->
+  <path d="M250 50 L400 325 L250 325 L100 325 Z" fill="none" stroke="#000000" stroke-width="15"/>
+  
+  <!-- Inner shapes -->
+  <path d="M250 50 L400 325 L250 325 Z" fill="none" stroke="#000000" stroke-width="15"/>
+  <path d="M250 325 L175 175 L100 325 Z" fill="#FF9F1C" stroke="#000000" stroke-width="15"/>
+  <path d="M250 325 L325 175 L400 325 Z" fill="none" stroke="#000000" stroke-width="15"/>
+  
+  <!-- Colorful panels -->
+  <!-- Right panel with gradient -->
+  <path d="M325 175 L400 325 L250 325 Z" fill="url(#rightGradient)" stroke="#000000" stroke-width="15"/>
+  
+  <!-- Bottom panel with stripes -->
+  <path d="M250 325 L325 400 L175 400 Z" fill="#FF5252" stroke="#000000" stroke-width="15"/>
+  <path d="M210 345 L290 345 L290 360 L210 360 Z" fill="#FFFFFF" stroke="none"/>
+  <path d="M210 375 L290 375 L290 390 L210 390 Z" fill="#FFFFFF" stroke="none"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="rightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2EC4B6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#9FE7F5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E9C46A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

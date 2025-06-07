@@ -34,10 +34,7 @@ const Navbar = () => {
           : "bg-transparent py-6"
       )}
     >
-      <div className="container px-4 mx-auto flex items-center justify-between">
-        <a href="/" className="flex items-center">
-          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
-            TodaysAi
+      <div className="container px-4 mx-auto flex items-center justify-between">        <a href="/" className="flex items-center">          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">            atkind
           </span>
         </a>
 
@@ -46,11 +43,7 @@ const Navbar = () => {
           <a href="#products" className="text-white/80 hover:text-white transition-colors">Products</a>
           <a href="#services" className="text-white/80 hover:text-white transition-colors">Services</a>
           <a href="#about" className="text-white/80 hover:text-white transition-colors">About</a>
-          <a href="#lab" className="text-white/80 hover:text-white transition-colors">Lab</a>
-          <a href="#contact" className="text-white/80 hover:text-white transition-colors">Contact</a>
-          <Button variant="ghost" className="bg-white/5 hover:bg-white/10 border border-white/10">
-            Login
-          </Button>
+          <a href="#lab" className="text-white/80 hover:text-white transition-colors">Lab</a>          <a href="#contact" className="text-white/80 hover:text-white transition-colors">Contact</a>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -70,9 +63,7 @@ const Navbar = () => {
           <a href="#products" className="text-xl text-white/80 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>Products</a>
           <a href="#services" className="text-xl text-white/80 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
           <a href="#about" className="text-xl text-white/80 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>About</a>
-          <a href="#lab" className="text-xl text-white/80 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>Lab</a>
-          <a href="#contact" className="text-xl text-white/80 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
-          <Button className="w-full bg-gradient-to-r from-techpurple to-elecblue border-0">Login</Button>
+          <a href="#lab" className="text-xl text-white/80 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>Lab</a>          <a href="#contact" className="text-xl text-white/80 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
         </nav>
       </div>
     </header>
