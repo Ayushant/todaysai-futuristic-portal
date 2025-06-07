@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,20 +15,16 @@ const queryClient = new QueryClient();
 const App = () => {
   // Global application resources that should be preloaded
   const globalResources = [
-    // Critical CSS
-    { href: '/styles/critical.css', as: 'style' as const },
     // Main font
     { href: '/fonts/inter-var.woff2', as: 'font' as const, type: 'font/woff2', crossOrigin: 'anonymous' as const },
-    // Critical JS
-    { href: '/scripts/performance-monitor.js', as: 'script' as const }
   ];
 
   // Third-party domains to establish early connections with
   const thirdPartyDomains = [
     'https://fonts.googleapis.com',
-    'https://analytics.google.com',
-    'https://cdn.jsdelivr.net'
+    'https://images.unsplash.com'
   ];
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
@@ -50,7 +47,6 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
