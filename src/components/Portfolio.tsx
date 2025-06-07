@@ -1,10 +1,10 @@
 
 import React, { useState, useMemo } from 'react';
-import { motion as m, AnimatePresence } from 'framer-motion';
-import { Search, Filter } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import ProjectCard from './portfolio/ProjectCard';
+import { motion as m } from 'framer-motion';
+import PortfolioHeader from './portfolio/PortfolioHeader';
+import SearchBar from './portfolio/SearchBar';
+import CategoryFilter from './portfolio/CategoryFilter';
+import ProjectGrid from './portfolio/ProjectGrid';
 import ProjectModal from './portfolio/ProjectModal';
 import MobileShowcase from './portfolio/MobileShowcase';
 import type { Project } from './portfolio/ProjectCard';
@@ -98,24 +98,15 @@ const Portfolio = () => {
     setSelectedProject(null);
   };
 
+  const handleResetFilters = () => {
+    setSelectedCategory('all');
+    setSearchTerm('');
+  };
+
   return (
     <section id="portfolio" className="py-20 bg-navy-900">
       <div className="container mx-auto px-6">
-        {/* Header */}
-        <m.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Our <span className="text-techpurple">Portfolio</span>
-          </h2>
-          <p className="text-xl text-white/70 max-w-3xl mx-auto">
-            Discover our innovative solutions that drive business growth and user engagement
-          </p>
-        </m.div>
+        <PortfolioHeader />
 
         {/* Search and Filters */}
         <m.div
@@ -126,38 +117,15 @@ const Portfolio = () => {
           className="mb-12"
         >
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            {/* Search */}
-            <div className="relative w-full md:w-96">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50 w-4 h-4" />
-              <Input
-                type="text"
-                placeholder="Search projects..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-navy-800/50 border-navy-600 text-white placeholder:text-white/50"
-              />
-            </div>
-
-            {/* Category Filters */}
-            <div className="flex gap-2 flex-wrap">
-              {categories.map((category) => (
-                <Button
-                  key={category.id}
-                  variant={selectedCategory === category.id ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`
-                    ${selectedCategory === category.id 
-                      ? 'bg-techpurple hover:bg-techpurple/80 text-white' 
-                      : 'bg-transparent border-navy-600 text-white/70 hover:bg-navy-800/50 hover:text-white'
-                    }
-                  `}
-                >
-                  <Filter className="w-4 h-4 mr-2" />
-                  {category.label}
-                </Button>
-              ))}
-            </div>
+            <SearchBar 
+              searchTerm={searchTerm} 
+              onSearchChange={setSearchTerm} 
+            />
+            <CategoryFilter 
+              categories={categories}
+              selectedCategory={selectedCategory}
+              onCategoryChange={setSelectedCategory}
+            />
           </div>
         </m.div>
 
@@ -169,29 +137,15 @@ const Portfolio = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
         >
-          <AnimatePresence mode="wait">
-            {filteredProjects.map((project, index) => (
-              <m.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                layout
-              >
-                <ProjectCard
-                  project={project}
-                  onClick={handleProjectClick}
-                />
-              </m.div>
-            ))}
-          </AnimatePresence>
+          <ProjectGrid 
+            projects={filteredProjects}
+            onProjectClick={handleProjectClick}
+            onResetFilters={handleResetFilters}
+          />
         </m.div>
 
-        {/* Mobile Showcase */}
         <MobileShowcase />
 
-        {/* Project Modal */}
         <ProjectModal
           selectedProject={selectedProject}
           onClose={handleCloseModal}
