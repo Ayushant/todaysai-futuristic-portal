@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
           <div>            <h3 className="text-xl font-bold text-white mb-6">atkind</h3>
             <p className="text-white/70 text-sm mb-4">
-              Building tomorrow's AI, today. Advanced artificial intelligence solutions
+              Building tomorrow's solution, today. Advanced artificial intelligence solutions
               for forward-thinking organizations.
             </p>
             <div className="flex space-x-4">

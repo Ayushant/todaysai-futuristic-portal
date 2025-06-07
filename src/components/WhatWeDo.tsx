@@ -210,112 +210,154 @@ const WhatWeDo = () => {
         ease: "easeInOut"
       }
     }
-  };
-    return (
+  };    return (
     <motion.section 
       ref={containerRef}
-      className="py-20 relative overflow-hidden" 
+      className="py-20 relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900/95 to-gray-800" 
       id="products"
       style={{ opacity }}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      {/* Enhanced Background elements */}
-      <div className="absolute top-0 left-0 w-full h-full bg-navy-100 opacity-50 z-0"></div>
-      <div className="absolute inset-0 grid-bg opacity-10"></div>
+      {/* Premium Background Elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.1),transparent_70%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(59,130,246,0.1),transparent_70%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(236,72,153,0.1),transparent_70%)]"></div>
       
-      {/* Animated gradient orbs */}
+      {/* Premium Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+      
+      {/* Animated gradient orbs with premium glow */}
       <motion.div 
-        className="absolute top-40 -left-40 w-80 h-80 rounded-full bg-techpurple/20 blur-3xl"
+        className="absolute top-20 -left-20 w-96 h-96 rounded-full bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 blur-3xl"
         animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.3, 0.1]
+          scale: [1, 1.3, 1],
+          opacity: [0.2, 0.4, 0.2],
+          rotate: [0, 180, 360]
         }}
-        transition={{ duration: 8, repeat: Infinity }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div 
-        className="absolute bottom-40 -right-40 w-96 h-96 rounded-full bg-elecblue/20 blur-3xl"
+        className="absolute bottom-20 -right-20 w-80 h-80 rounded-full bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 blur-3xl"
         animate={{ 
           scale: [1.2, 1, 1.2],
+          opacity: [0.2, 0.4, 0.2],
+          rotate: [360, 180, 0]
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div 
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-blue-500/10 blur-2xl"
+        animate={{ 
+          scale: [1, 1.5, 1],
           opacity: [0.1, 0.3, 0.1]
         }}
-        transition={{ duration: 10, repeat: Infinity }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
       
-      {/* Floating particles */}
-      {Array.from({ length: 6 }).map((_, i) => (
+      {/* Premium floating particles */}
+      {Array.from({ length: 12 }).map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-techpurple/30 rounded-full"
+          className="absolute w-1 h-1 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full shadow-lg"
           style={{
-            left: `${20 + i * 15}%`,
-            top: `${30 + (i % 3) * 20}%`,
+            left: `${10 + i * 8}%`,
+            top: `${20 + (i % 4) * 20}%`,
           }}
-          variants={floatingVariants}
-          animate="animate"
-          transition={{ delay: i * 0.5 }}
+          animate={{
+            y: [-20, 20],
+            opacity: [0.3, 1, 0.3],
+            scale: [0.5, 1, 0.5]
+          }}
+          transition={{ 
+            duration: 4 + (i % 3),
+            repeat: Infinity,
+            repeatType: "reverse",
+            delay: i * 0.3,
+            ease: "easeInOut"
+          }}
         />
       ))}
       
-      {/* Interactive glow effect following mouse */}
+      {/* Interactive premium glow effect */}
       <AnimatePresence>
         {isHovering && (
           <motion.div
-            className="absolute w-96 h-96 rounded-full bg-gradient-radial from-techpurple/10 via-elecblue/10 to-transparent pointer-events-none z-10"
+            className="absolute w-[500px] h-[500px] rounded-full pointer-events-none z-10"
             style={{
               left: mouseXSpring,
               top: mouseYSpring,
-              transform: 'translate(-50%, -50%)'
+              transform: 'translate(-50%, -50%)',
+              background: 'radial-gradient(circle, rgba(139,92,246,0.15) 0%, rgba(59,130,246,0.1) 30%, rgba(236,72,153,0.05) 60%, transparent 100%)'
             }}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           />
         )}
       </AnimatePresence>
       
-      <div className="container px-4 mx-auto relative z-10">
-        <motion.div 
-          className="text-center mb-16"
+      <div className="container px-4 mx-auto relative z-10">        <motion.div 
+          className="text-center mb-20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.h2 
-            className="text-3xl md:text-5xl font-bold heading-gradient mb-5 relative"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            What We Do
-            <motion.div
-              className="absolute -top-4 -right-4 w-8 h-8"
-              variants={glowVariants}
-              initial="initial"
-              animate="animate"
-            >
-              <Sparkles className="w-full h-full text-techpurple" />
-            </motion.div>
-          </motion.h2>
+          {/* Premium Header with enhanced styling */}
+          <div className="relative inline-block mb-8">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-pink-500/20 rounded-3xl blur-xl"></div>
+            <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 px-12 py-6 shadow-2xl">              <motion.h2 
+                className="text-4xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent relative"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                What We Do
+                <motion.div
+                  className="absolute -top-6 -right-6 w-12 h-12"
+                  variants={glowVariants}
+                  initial="initial"
+                  animate="animate"
+                >
+                  <Sparkles className="w-full h-full text-purple-400 drop-shadow-lg" />
+                </motion.div>
+                
+                {/* Premium text shadow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 bg-clip-text text-transparent blur-lg opacity-50 -z-10">
+                  What We Do
+                </div>
+              </motion.h2>
+            </div>
+          </div>
+          
           <motion.p 
-            className="text-white/70 max-w-2xl mx-auto"
+            className="text-xl text-gray-300/90 max-w-3xl mx-auto leading-relaxed font-light"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
             The perfect synergy of groundbreaking products and expert services,
-            designed to transform how businesses leverage artificial intelligence.
+            <span className="text-white font-medium"> designed to transform </span>
+            how businesses leverage artificial intelligence.
           </motion.p>
+          
+          {/* Premium decorative line */}
+          <motion.div
+            className="w-32 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent mx-auto mt-8"
+            initial={{ width: 0 }}
+            whileInView={{ width: 128 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            viewport={{ once: true }}
+          />
         </motion.div>
           <motion.div 
           className="grid grid-cols-1 lg:grid-cols-2 gap-10"
           style={{ y }}
-        >
-          {/* Products Column - Left Brain */}
+        >          {/* Products Column - Enhanced Premium Design */}
           <motion.div 
             className="relative overflow-hidden"
             initial={{ opacity: 0, x: -100 }}
@@ -323,43 +365,50 @@ const WhatWeDo = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true, margin: "-50px" }}
           >
+            {/* Premium section header */}
             <motion.div 
-              className="flex justify-between items-center mb-6"
+              className="relative mb-8 p-6 bg-gradient-to-r from-white/5 via-white/10 to-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold text-white relative">
-                <motion.span 
-                  className="text-techpurple"
-                  whileHover={{ 
-                    textShadow: "0 0 20px rgba(147, 51, 234, 0.8)",
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  Products
-                </motion.span> | The Logic Core
-                <motion.div
-                  className="absolute -top-2 -right-8"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                >
-                  <Brain className="w-5 h-5 text-techpurple/60" />
-                </motion.div>
-              </h3>
-              <motion.div 
-                className="h-px w-16 bg-gradient-to-r from-transparent to-techpurple"
-                initial={{ width: 0 }}
-                whileInView={{ width: 64 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                viewport={{ once: true }}
-              />
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <motion.div
+                    className="w-14 h-14 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <Brain className="w-7 h-7 text-white" />
+                  </motion.div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white relative">
+                      <motion.span 
+                        className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent"
+                        whileHover={{ 
+                          textShadow: "0 0 20px rgba(147, 51, 234, 0.8)",
+                          transition: { duration: 0.3 }
+                        }}
+                      >
+                        Premium Products
+                      </motion.span>
+                    </h3>
+                    <p className="text-gray-300/80 text-sm">The Logic Core</p>
+                  </div>
+                </div>
+                <motion.div 
+                  className="h-px w-20 bg-gradient-to-r from-transparent via-purple-500 to-blue-500"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: 80 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  viewport={{ once: true }}
+                />
+              </div>
             </motion.div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {products.map((product, index) => (
-                <motion.div 
+              {products.map((product, index) => (                <motion.div 
                   key={product.id}
                   custom={index}
                   variants={cardVariants}
@@ -368,78 +417,90 @@ const WhatWeDo = () => {
                   whileHover="hover"
                   viewport={{ once: true, margin: "-50px" }}
                   className={cn(
-                    "glass-card p-5 cursor-pointer group transition-all duration-300 relative overflow-hidden",
-                    activeProduct === product.id ? "border-techpurple/50 shadow-lg shadow-techpurple/20" : ""
+                    "relative group cursor-pointer transition-all duration-500",
+                    "bg-gradient-to-br from-white/5 via-white/10 to-white/5 backdrop-blur-xl",
+                    "border border-white/10 rounded-3xl p-6 shadow-2xl overflow-hidden",
+                    "hover:border-purple-500/30 hover:shadow-purple-500/20",
+                    activeProduct === product.id ? "border-purple-500/50 shadow-lg shadow-purple-500/25" : ""
                   )}
                   onClick={() => setActiveProduct(activeProduct === product.id ? null : product.id)}
                 >
-                  {/* Card glow effect */}
+                  {/* Premium card glow effect */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-techpurple/5 via-transparent to-elecblue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-blue-500/5 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl"
                     layoutId={`product-glow-${product.id}`}
                   />
                   
-                  {/* Animated border */}
+                  {/* Animated premium border */}
                   <motion.div
-                    className="absolute inset-0 rounded-lg"
+                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100"
                     style={{
-                      background: `conic-gradient(from 0deg, transparent, ${activeProduct === product.id ? '#9333ea' : 'transparent'}, transparent)`
+                      background: `conic-gradient(from 0deg, transparent, ${activeProduct === product.id ? '#8B5CF6' : '#6366F1'}, transparent)`
                     }}
                     animate={{ rotate: activeProduct === product.id ? 360 : 0 }}
-                    transition={{ duration: 2, repeat: activeProduct === product.id ? Infinity : 0, ease: "linear" }}
+                    transition={{ duration: 3, repeat: activeProduct === product.id ? Infinity : 0, ease: "linear" }}
                   />
-                    <div className="relative z-10">
-                    <div className="flex justify-between items-start mb-4">                      <motion.div 
+                  
+                  {/* Premium shimmer effect */}
+                  <motion.div
+                    className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100"
+                    animate={{ x: ['-100%', '100%'] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-start mb-6">
+                      <motion.div 
                         className={cn(
-                          "w-12 h-12 rounded-xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm",
+                          "w-16 h-16 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm",
                           "border border-white/20 flex items-center justify-center relative overflow-hidden",
-                          "shadow-lg group-hover:shadow-xl transition-shadow duration-300"
+                          "shadow-xl group-hover:shadow-2xl transition-all duration-500"
                         )}
-                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        whileHover={{ scale: 1.15, rotate: 10 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                       >
-                        {/* Icon glow effect */}
+                        {/* Enhanced icon glow effect */}
                         <motion.div
                           className={cn(
-                            "absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100",
-                            product.iconColor.replace('text-', 'bg-').replace('-400', '-500/20')
+                            "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100",
+                            product.iconColor.replace('text-', 'bg-').replace('-400', '-500/30')
                           )}
-                          transition={{ duration: 0.3 }}
-                        />
-                        
-                        {/* Shimmer effect */}
-                        <motion.div
-                          className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/10 to-transparent"
-                          initial={{ x: '-100%' }}
-                          whileHover={{ x: '100%' }}
-                          transition={{ duration: 0.6 }}
+                          transition={{ duration: 0.5 }}
                         />
                         
                         <product.icon 
-                          className={cn("w-6 h-6 relative z-10", product.iconColor)}
+                          className={cn("w-8 h-8 relative z-10", product.iconColor, "drop-shadow-lg")}
                         />
                         
-                        {/* Animated border on hover */}
+                        {/* Premium rotating border */}
                         <motion.div
-                          className="absolute inset-0 rounded-xl border-2 border-transparent"
-                          whileHover={{
-                            borderColor: product.iconColor.includes('purple') ? '#a855f7' :
-                                       product.iconColor.includes('blue') ? '#60a5fa' :
-                                       product.iconColor.includes('emerald') ? '#34d399' : '#fb923c'
+                          className="absolute inset-0 rounded-2xl border-2 border-transparent opacity-0 group-hover:opacity-100"
+                          style={{
+                            borderImage: `conic-gradient(from 0deg, ${
+                              product.iconColor.includes('purple') ? '#a855f7' :
+                              product.iconColor.includes('blue') ? '#60a5fa' :
+                              product.iconColor.includes('emerald') ? '#34d399' : '#fb923c'
+                            }, transparent, ${
+                              product.iconColor.includes('purple') ? '#a855f7' :
+                              product.iconColor.includes('blue') ? '#60a5fa' :
+                              product.iconColor.includes('emerald') ? '#34d399' : '#fb923c'
+                            }) 1`
                           }}
-                          transition={{ duration: 0.3 }}
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                         />
                       </motion.div>
+                      
                       <motion.div 
-                        className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-techpurple/20 transition-colors"
-                        whileHover={{ scale: 1.1 }}
+                        className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-purple-500/20 transition-all duration-500 border border-white/10"
+                        whileHover={{ scale: 1.2 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         <motion.div
                           animate={{ rotate: activeProduct === product.id ? 90 : 0 }}
-                          transition={{ duration: 0.3 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
                         >
-                          <ArrowRight size={16} className="text-white/70 group-hover:text-white" />
+                          <ArrowRight size={18} className="text-white/70 group-hover:text-white transition-colors" />
                         </motion.div>
                       </motion.div>
                     </div>

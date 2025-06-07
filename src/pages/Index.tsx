@@ -6,6 +6,7 @@ import Hero from '@/components/Hero';
 import WhatWeDo from '@/components/WhatWeDo';
 import About from '@/components/About';
 import AppShowcase from '@/components/AppShowcase';
+import WebAppShowcase from '@/components/WebAppShowcase';
 import LabShowcase from '@/components/LabShowcase';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -52,12 +53,12 @@ const Index = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-      >
-        <Navbar />
+      >        <Navbar />
         <Hero />
         <WhatWeDo />
         <About />
         <AppShowcase />
+        <WebAppShowcase />
         <LabShowcase />
         <Contact />
         <Footer />

@@ -11,6 +11,7 @@ interface OptimizedImageProps {
   decoding?: 'async' | 'auto' | 'sync';
   sizes?: string;
   style?: React.CSSProperties;
+  fetchPriority?: 'high' | 'low' | 'auto';
 }
 
 /**
@@ -31,12 +32,12 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   decoding = 'async',
   sizes,
   style,
+  fetchPriority = 'auto',
   ...props
 }) => {
   // Determine if the image is from an external source (URL) or local
   const isExternal = src.startsWith('http') || src.startsWith('https');
-  
-  // For external images, we can't generate srcset, so we use the original src
+    // For external images, we can't generate srcset, so we use the original src
   if (isExternal) {
     return (
       <img
@@ -49,10 +50,10 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         decoding={decoding}
         sizes={sizes}
         style={style}
+        fetchPriority={fetchPriority}
         {...props}
       />
-    );
-  }
+    );  }
 
   // For local images, we could implement more advanced optimizations
   // In a real-world scenario, you might use a library like next/image or a custom solution
@@ -68,6 +69,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       decoding={decoding}
       sizes={sizes}
       style={style}
+      fetchPriority={fetchPriority}
       {...props}
     />
   );
