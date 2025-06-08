@@ -1,4 +1,6 @@
+
 import { useCallback, useRef, useEffect } from 'react';
+import React from 'react';
 
 type CallbackFunction<T extends (...args: any[]) => any> = T;
 
@@ -87,6 +89,6 @@ export function withPerformanceMonitoring<P extends object>(
       startTime.current = performance.now();
     });
 
-    return <MemoizedComponent {...props} />;
+    return React.createElement(MemoizedComponent, props);
   };
-} 
+}
