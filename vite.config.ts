@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => {
       const { componentTagger: tagger } = require("lovable-tagger");
       componentTagger = tagger;
     } catch (error) {
-      console.warn("lovable-tagger not available:", error.message);
+      console.warn("lovable-tagger not available:", (error as Error).message);
     }
   }
   
