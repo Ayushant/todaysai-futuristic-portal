@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
@@ -23,7 +22,7 @@ const Index = () => {
   const criticalResources = [
     // Preload critical images
     { href: '/images/hero-bg.webp', as: 'image' as const, type: 'image/webp' },
-    { href: '/fonts/custom-font.woff2', as: 'font' as const, type: 'font/woff2', crossOrigin: 'anonymous' as const },
+    { href: '/fonts/inter-var.woff2', as: 'font' as const, type: 'font/woff2', crossOrigin: 'anonymous' as const },
   ];
 
   // Define resources to prefetch (for subsequent navigation)
@@ -38,7 +37,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="bg-navy text-white min-h-screen custom-cursor-zone">
+    <div className="relative min-h-screen bg-navy text-white">
       {/* Preload critical resources */}
       <ResourcePreloader 
         resources={criticalResources}
@@ -53,16 +52,26 @@ const Index = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-      >        <Navbar />
-        <Hero />
-        <WhatWeDo />
-        <About />
-        <AppShowcase />
-        <WebAppShowcase />
-        <LabShowcase />
-        <Contact />
+        className="relative z-10"
+      >
+        <Navbar />
+        <main>
+          <Hero />
+          <WhatWeDo />
+          <About />
+          <AppShowcase />
+          <WebAppShowcase />
+          <LabShowcase />
+          <Contact />
+        </main>
         <Footer />
       </motion.div>
+
+      {/* Background elements */}
+      <div className="fixed inset-0">
+        <div className="absolute inset-0 bg-gradient-radial from-navy-200 to-navy opacity-70"></div>
+        <div className="absolute inset-0 grid-bg opacity-20"></div>
+      </div>
     </div>
   );
 };
