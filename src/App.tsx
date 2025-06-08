@@ -1,21 +1,17 @@
-import React, { Suspense, lazy } from 'react';
+
+import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./hooks/use-theme";
 import ResourcePreloader from "@/components/ResourcePreloader";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
-import LoadingSpinner from '@/components/LoadingSpinner';
 
 const queryClient = new QueryClient();
-
-// Lazy load routes
-const Home = lazy(() => import('@/pages/Home'));
-const About = lazy(() => import('@/pages/About'));
-const Portfolio = lazy(() => import('@/pages/Portfolio'));
-const Contact = lazy(() => import('@/pages/Contact'));
 
 const App = () => {
   // Global application resources that should be preloaded
@@ -50,14 +46,10 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <Suspense fallback={<LoadingSpinner />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/portfolio" element={<Portfolio />} />
-                <Route path="/contact" element={<Contact />} />
-              </Routes>
-            </Suspense>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </BrowserRouter>
         </TooltipProvider>
       </ThemeProvider>

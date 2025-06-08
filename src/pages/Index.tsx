@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
@@ -18,10 +19,11 @@ const Index = () => {
     document.title = 'atkind - Building Tomorrow\'s AI, Today';
   }, []);
 
-  // Updated resource paths to be absolute
+  // Define critical resources to preload
   const criticalResources = [
+    // Preload critical images
     { href: '/images/hero-bg.webp', as: 'image' as const, type: 'image/webp' },
-    { href: '/fonts/inter-var.woff2', as: 'font' as const, type: 'font/woff2', crossOrigin: 'anonymous' as const },
+    { href: '/fonts/custom-font.woff2', as: 'font' as const, type: 'font/woff2', crossOrigin: 'anonymous' as const },
   ];
 
   // Define resources to prefetch (for subsequent navigation)

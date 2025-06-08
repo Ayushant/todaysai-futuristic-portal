@@ -12,7 +12,6 @@ export default defineConfig(({ mode }) => {
       // Split vendor chunks for better caching
       splitVendorChunkPlugin(),
     ].filter(Boolean),
-    base: './', // Change to relative path for better compatibility
     server: {
       host: "0.0.0.0",
       port: 3000,

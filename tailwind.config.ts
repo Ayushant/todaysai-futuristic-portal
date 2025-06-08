@@ -1,13 +1,13 @@
+
 import type { Config } from "tailwindcss";
 
-const config = {
+export default {
 	darkMode: ["class"],
 	content: [
-		"./index.html",
-		"./src/**/*.{js,ts,jsx,tsx}",
-		"./pages/**/*.{js,ts,jsx,tsx}",
-		"./components/**/*.{js,ts,jsx,tsx}",
-		"./app/**/*.{js,ts,jsx,tsx}",
+		"./pages/**/*.{ts,tsx}",
+		"./components/**/*.{ts,tsx}",
+		"./app/**/*.{ts,tsx}",
+		"./src/**/*.{ts,tsx}",
 	],
 	prefix: "",
 	theme: {
@@ -19,18 +19,6 @@ const config = {
 			}
 		},
 		extend: {
-			opacity: {
-				'10': '0.1',
-				'15': '0.15',
-				'20': '0.2',
-				'30': '0.3',
-				'40': '0.4',
-				'50': '0.5',
-				'60': '0.6',
-				'70': '0.7',
-				'80': '0.8',
-				'90': '0.9',
-			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -74,7 +62,7 @@ const config = {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
+				},				// Custom colors for atkind
 				navy: {
 					DEFAULT: '#0A1128',
 					100: '#1A223F',
@@ -149,5 +137,3 @@ const config = {
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-
-export default config;

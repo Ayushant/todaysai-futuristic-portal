@@ -1,10 +1,11 @@
+
 import React, { useState } from 'react';
 import { motion as m, AnimatePresence } from 'framer-motion';
 import { Smartphone, Star, Download, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
-// Import app images
+// Import your premium app images
 import app1 from '../assets/app1.jpg';
 import app2 from '../assets/app2.jpg';
 import app3 from '../assets/app3.jpg';
@@ -18,7 +19,7 @@ const mobileApps = [
     id: 1,
     title: 'Winwitty',
     category: 'Gaming app',
-    description: 'Advanced gaming platform with AI-powered insights, and comprehensive portfolio tracking.',
+    description: 'Advanced gaming platform with AI-powered insights,  and comprehensive portfolio tracking.',
     image: app1,
     preview: app1,
     screenshots: [app1, app2, app3],
@@ -27,7 +28,7 @@ const mobileApps = [
     users: '2.5K+',
     platform: 'Mobile',
     features: ['AI-Powered Analytics', 'Real-time Trading', 'Portfolio Management', 'Risk Assessment', 'Smart Notifications', 'Multi-Currency Support'],
-    tech: ['React Native', 'TypeScript', 'WebSocket', 'Chart.js']
+    tech: ['React Native',   'TypeScript', 'WebSocket', 'Chart.js']
   },
   {
     id: 2,
