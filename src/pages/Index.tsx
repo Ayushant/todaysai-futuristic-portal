@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
@@ -11,6 +12,7 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
 import ResourcePreloader from '@/components/ResourcePreloader';
+import OptimizedPortfolio from '@/components/portfolio/OptimizedPortfolio';
 
 const Index = () => {
   // Update page title and metadata
@@ -62,6 +64,7 @@ const Index = () => {
           <AppShowcase />
           <WebAppShowcase />
           <LabShowcase />
+          <OptimizedPortfolio />
           <Contact />
         </main>
         <Footer />
