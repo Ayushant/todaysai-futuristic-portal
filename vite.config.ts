@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { splitVendorChunkPlugin } from "vite";
-import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -13,14 +12,14 @@ export default defineConfig(({ mode }) => {
       // Split vendor chunks for better caching
       splitVendorChunkPlugin(),
     ].filter(Boolean),
-    base: '/', // Changed to absolute path for better production compatibility
+    base: './', // Change to relative path for better compatibility
     server: {
       host: "0.0.0.0",
       port: 3000,
     },
     resolve: {
       alias: {
-        "@": path.resolve(__dirname, "./src"),
+        "@": "/src",
       },
     },
     build: {
