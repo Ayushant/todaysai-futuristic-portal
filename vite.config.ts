@@ -8,24 +8,10 @@ import path from "path";
 export default defineConfig(({ mode }) => {
   const isDev = mode === "development";
   
-  // Only import and use lovable-tagger in development
-  let componentTagger;
-  if (isDev) {
-    try {
-      // Dynamic import to avoid issues in production builds
-      const { componentTagger: tagger } = require("lovable-tagger");
-      componentTagger = tagger;
-    } catch (error) {
-      console.warn("lovable-tagger not available:", (error as Error).message);
-    }
-  }
-  
   return {
     base: '/', // Ensure proper base URL for Vercel
     plugins: [
       react(),
-      // Add component tagger only in development if available
-      ...(isDev && componentTagger ? [componentTagger()] : []),
       // Split vendor chunks for better caching
       splitVendorChunkPlugin(),
     ].filter(Boolean),
