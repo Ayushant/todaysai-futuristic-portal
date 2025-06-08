@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,7 +10,15 @@ import { ThemeProvider } from "./hooks/use-theme";
 import ResourcePreloader from "@/components/ResourcePreloader";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
 
-const queryClient = new QueryClient();
+// Create a new QueryClient instance
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => {
   // Global application resources that should be preloaded
@@ -27,33 +34,35 @@ const App = () => {
   ];
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <TooltipProvider>
-          {/* Preload critical global resources */}
-          <ResourcePreloader 
-            resources={globalResources}
-            preconnect={thirdPartyDomains}
-            dns={['https://api.example.com']}
-          />
-          
-          {/* Monitor and report performance metrics */}
-          <PerformanceMonitor 
-            logToConsole={process.env.NODE_ENV !== 'production'}
-            reportToServer={process.env.NODE_ENV === 'production'}
-          />
-          
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <Suspense fallback={<div>Loading...</div>}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <TooltipProvider>
+            {/* Preload critical global resources */}
+            <ResourcePreloader 
+              resources={globalResources}
+              preconnect={thirdPartyDomains}
+              dns={['https://api.example.com']}
+            />
+            
+            {/* Monitor and report performance metrics */}
+            <PerformanceMonitor 
+              logToConsole={process.env.NODE_ENV !== 'production'}
+              reportToServer={process.env.NODE_ENV === 'production'}
+            />
+            
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </Suspense>
   );
 };
 
